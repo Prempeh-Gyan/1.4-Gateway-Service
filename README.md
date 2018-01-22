@@ -1,12 +1,13 @@
 # Bootiful Microservices Sample Implementation
 
-### Navigation: [`Previous Repo : OAuth2-Service`](https://github.com/Prempeh-Gyan/1.3-OAuth2-Service)  |  [`Next Repo: SignUp-Service`](https://github.com/Prempeh-Gyan/2.0-SignUp-Service)
+#### Navigation: [`Previous Repo : OAuth2-Service`](https://github.com/Prempeh-Gyan/1.3-OAuth2-Service)  |  [`Next Repo: SignUp-Service`](https://github.com/Prempeh-Gyan/2.0-SignUp-Service)
 
 ### Travis
 [![Build Status](https://travis-ci.org/Prempeh-Gyan/1.4-Gateway-Service.svg)](https://travis-ci.org/Prempeh-Gyan/1.4-Gateway-Service)
 
 ### Heroku
 To deploy this project to Heroku, click the button below:
+
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/Prempeh-Gyan/1.4-Gateway-Service)
 
 ### Getting Started
