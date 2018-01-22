@@ -1,12 +1,12 @@
 # Bootiful Microservices Sample Implementation
 
-## Navigation: [`Previous Repo : OAuth2-Service`](https://github.com/Prempeh-Gyan/1.3-OAuth2-Service)  |  [`Next Repo: SignUp-Service`](https://github.com/Prempeh-Gyan/2.0-SignUp-Service)
+### Navigation: [`Previous Repo : OAuth2-Service`](https://github.com/Prempeh-Gyan/1.3-OAuth2-Service)  |  [`Next Repo: SignUp-Service`](https://github.com/Prempeh-Gyan/2.0-SignUp-Service)
 
 ### Travis
 [![Build Status](https://travis-ci.org/Prempeh-Gyan/1.4-Gateway-Service.svg)](https://travis-ci.org/Prempeh-Gyan/1.4-Gateway-Service)
 
 ### Heroku
-To deploy this project to Heroku, click the button below:	
+To deploy this project to Heroku, click the button below:
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/Prempeh-Gyan/1.4-Gateway-Service)
 
 ### Getting Started
@@ -18,13 +18,17 @@ Get the project from the source repository
 
 ### About This Service
 This Gateway-Service uses the Netflix Zuul project to provide service routing capabilities for all the microservices in the `Bootiful Microservices`.
+
 This means that, the Gateway-Service proxies service requests coming from the "outside world" to any of the `Bootiful Microservices`.
-With this Gateway-Service, it is ensured that all the calls to any of the microservices go through a single "front door"(this Gateway-Service) before the actual targeted service is invoked.
-With this architecture, it is very easy to address cross-cutting concerns such as security and logging among others by just using the Gateway-Service as a centralized Policy Enforcement Point(PEP).  
+
+With this Gateway-Service, it is ensured that all calls to any of the microservices go through a single "front door"(this Gateway-Service) before the actual targeted service is invoked.
+
+With this architecture, it is very easy to address cross-cutting concerns such as security and logging among others by just using the Gateway-Service as a centralized Policy Enforcement Point(PEP). 
+ 
 This Service also integrates with Kafka to send messages to other microservices when certain events occur.
 
 ### Running the Project (and its Dependencies)
-* `Set up and run [`kafka`](https://kafka.apache.org/) then update the [`configuration file`](https://github.com/Prempeh-Gyan/1.1-Config-Repo/blob/master/services/Gateway-Service/gateway-service.yml ) to point to it`
-* `Run the [`Config-Server`](https://github.com/Prempeh-Gyan/1.0-Config-Server) to serve the property file for this Gateway-Service`
-* `The Gateway-Service needs the [`Discovery-Service`](https://github.com/Prempeh-Gyan/1.2-Discovery-Service) to know the locations of all the other microservices in order to route incoming service requests to intended targeted services`
-* `Some resources in the Gateway-Service are protected with Oauth2 security, hence the [`OAuth2-Service`](https://github.com/Prempeh-Gyan/1.3-OAuth2-Service)  needs to be set up as well.`
+* Set up and run [`kafka`](https://kafka.apache.org/) then update the [`configuration file`](https://github.com/Prempeh-Gyan/1.1-Config-Repo/blob/master/services/Gateway-Service/gateway-service.yml ) to point to it
+* Run the [`Config-Server`](https://github.com/Prempeh-Gyan/1.0-Config-Server) to serve the property file for this Gateway-Service
+* The Gateway-Service needs the [`Discovery-Service`](https://github.com/Prempeh-Gyan/1.2-Discovery-Service) to know the locations of all the other microservices in order to route incoming service requests to intended targeted services
+* Some resources in the Gateway-Service are protected with Oauth2 security, hence the [`OAuth2-Service`](https://github.com/Prempeh-Gyan/1.3-OAuth2-Service)  needs to be set up as well.
