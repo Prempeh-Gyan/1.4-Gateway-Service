@@ -19,10 +19,18 @@ import org.springframework.web.client.RestTemplate;
 
 import com.premps.gatewayservice.interceptor.UserContextInterceptor;
 
-@EnableFeignClients(basePackages = { "com.premps.gatewayservice.feignClient" })
-@EnableZuulProxy
-@EnableBinding(Source.class)
+/**
+ * This class has the configurations to set up the Gateway-Service.
+ * 
+ * @author Prempeh Gyan
+ * @version 1.0
+ * @since 22/01/2018
+ *
+ */
+@EnableZuulProxy // Sets up a Zuul server endpoint and installs some reverse proxy filters
 @EnableCircuitBreaker
+@EnableFeignClients(basePackages = { "com.premps.gatewayservice.feignClient" })
+@EnableBinding(Source.class)
 @EnableResourceServer
 @ComponentScan(basePackages = { "com.premps.gatewayservice" })
 @SpringBootApplication
@@ -32,8 +40,17 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	/**
+	 * 
+	 * @return When a service call is made through the Gateway-Service, the targeted
+	 *         service is invoked by the Gateway using the RestTemplate. In order to
+	 *         ensure that data from the headers of the original service call is
+	 *         propagated to the targeted service, a custom UserContex is used to
+	 *         hold this information and then injected into the RestTemplate through
+	 *         the UserContextInterceptor.
+	 */
 	@Bean
-	@LoadBalanced
+	@LoadBalanced 
 	public RestTemplate getRestTemplate() {
 
 		RestTemplate restTemplate = new RestTemplate();
