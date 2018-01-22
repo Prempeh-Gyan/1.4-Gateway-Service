@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/Prempeh-Gyan/1.4-Gateway-Service.svg)](https://travis-ci.org/Prempeh-Gyan/1.4-Gateway-Service)
 
 ### Heroku
-To deploy this project to Heroku, click the button below:
+To deploy this project to Heroku, update the [`configuration file`](https://github.com/Prempeh-Gyan/1.1-Config-Repo/blob/master/services/Gateway-Service/gateway-service.yml ) to point to the Heroku locations of the dependent services before deploying this to Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/Prempeh-Gyan/1.4-Gateway-Service)
 
