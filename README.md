@@ -1,4 +1,4 @@
-# Bootiful Microservices Sample Implementation
+# Bootiful Microservices
 
 #### Navigation: [`Previous Repo : OAuth2-Service`](https://github.com/Prempeh-Gyan/1.3-OAuth2-Service)  |  [`Next Repo: SignUp-Service`](https://github.com/Prempeh-Gyan/2.0-SignUp-Service)
 
