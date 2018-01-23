@@ -27,6 +27,18 @@ import com.premps.gatewayservice.model.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * This Search controller handles requests from end ussers seaching for other
+ * users. To complete the search, the user's request hits the Gateway-Service
+ * through the methods in this controller. The Gateway-Service then invokes a
+ * call to the Search-Service through one of 2 options(Feign or RestTemplate).
+ * The response is then returned to the user.
+ * 
+ * @author Prempeh Gyan
+ * @version 1.0
+ * @since 22/01/2018
+ *
+ */
 @Slf4j
 @RestController
 @RequiredArgsConstructor(onConstructor = @__({ @Autowired }))
@@ -37,31 +49,27 @@ public class SearchController {
 	private final @NotNull SearchFeignClient searchFeignClient;
 
 	// @formatter:off
-	@HystrixCommand(fallbackMethod = "getAllUsersFallBackMethod",
-					commandProperties = {
-						@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "6000"),
-						@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
-						@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "75"),
-						@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "7000"),
-						@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "15000"),
-						@HystrixProperty(name = "metrics.rollingStats.numBuckets", value = "5") 
-										}, 
-					threadPoolKey = "getAllUsersThreadPool", 
-					threadPoolProperties = {
-						@HystrixProperty(name = "coreSize", value = "30"),
-						@HystrixProperty(name = "maxQueueSize", value = "10") }
-					)
+	@HystrixCommand(fallbackMethod = "getAllUsersFallBackMethod", commandProperties = {
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "6000"),
+			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+			@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "75"),
+			@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "7000"),
+			@HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "15000"),
+			@HystrixProperty(name = "metrics.rollingStats.numBuckets", value = "5") }, threadPoolKey = "getAllUsersThreadPool", threadPoolProperties = {
+					@HystrixProperty(name = "coreSize", value = "30"),
+					@HystrixProperty(name = "maxQueueSize", value = "10") })
 	@RequestMapping(value = { "/get-all-users" }, method = RequestMethod.GET)
 	public List<User> getAllUsers() {
-		
+
 		log.info("Inside Hystrix bulkHead: Authorization = {}", UserContext.getAuthToken());
 
 		log.info("Inside Hystrix bulkHead: CorrelationId = {}", UserContext.getCorrelationId());
-		
+
 		log.info("Filter Utils correlationId = {}");
-		
+
 		return searchFeignClient.getAllUsers();
 	}
+
 	// @formatter:on
 	@HystrixCommand(fallbackMethod = "getUserByIdFallBackMethod", commandProperties = {
 			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "6000") })
