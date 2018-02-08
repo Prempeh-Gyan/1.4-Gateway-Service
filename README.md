@@ -30,6 +30,6 @@ This Service also integrates with Kafka to send messages to other microservices 
 
 ### Running the Project (and its Dependencies)
 * Set up and run [`kafka`](https://kafka.apache.org/) then update the [`configuration file`](https://github.com/Prempeh-Gyan/1.1-Config-Repo/blob/master/services/Gateway-Service/gateway-service.yml ) to point to it
-* Run the [`Config-Server`](https://github.com/Prempeh-Gyan/1.0-Config-Server) to serve the property file for this Gateway-Service
+* Run the [`Config-Service`](https://github.com/Prempeh-Gyan/1.0-Config-Service) to serve the property file for this Gateway-Service
 * The Gateway-Service needs the [`Discovery-Service`](https://github.com/Prempeh-Gyan/1.2-Discovery-Service) to know the locations of all the other microservices in order to route incoming service requests to intended targeted services
 * Some resources in the Gateway-Service are protected with Oauth2 security, hence the [`OAuth2-Service`](https://github.com/Prempeh-Gyan/1.3-OAuth2-Service)  needs to be set up as well.
